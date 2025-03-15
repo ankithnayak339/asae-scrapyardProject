@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonlight - Log In</title>
+    <link rel="stylesheet" href="main.css"> <!-- Link to the existing CSS file -->
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #0B3D91, #000D33); 
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="login-title">Enter Prompt</h2>
+            <form class="login-form">
+                <div class="input-group">
+                    <label for="email-username">Username</label>
+                    <input type="text" id="email-username" placeholder="Enter your email or username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Prompt</label>
+                    <input type="password" id="password" placeholder="Enter your prompt" required>
+                </div>
+                <button onclick="window.location.href='home_screen.html'" class="login-btn" >Enter</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
