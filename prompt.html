@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moonlight - Log In</title>
     <link rel="stylesheet" href="main.css"> <!-- Link to the existing CSS file -->
+    <script src="prompt.js"></script>
 
     <style>
         body {
@@ -29,10 +30,10 @@
                     <input type="text" id="email-username" placeholder="Enter your email or username" required>
                 </div>
                 <div class="input-group">
-                    <label for="password">Prompt</label>
-                    <input type="password" id="password" placeholder="Enter your prompt" required>
+                    <label >Prompt</label>
+                    <input type="text" id="prompt" placeholder="ex: on an airplane" required>
                 </div>
-                <button onclick="window.location.href='play.html'" class="login-btn" >Enter</button>
+                <button type="button" onclick="rap(); return false;" class="login-btn">Enter</button>
             </form>
         </div>
     </div>
