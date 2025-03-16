@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet:wght@100..400&display=swap" rel="stylesheet">
     <title>Single Audio Player with Two Visualizers</title>
 
     <link rel="stylesheet" href="main.css">
@@ -38,11 +39,15 @@
     <audio id="audio" controls></audio>
     
     <div class="container">
-        <div class="visualizer-box">
-            <canvas id="visualizer1" width="300" height="300"></canvas>
+        <div  class="visualizer-box">
+            <canvas style="background: url(kendricklamar.webp); background-size: cover; 
+            background-position: center; 
+            background-repeat:no-repeat;" id="visualizer1" width="300" height="300"></canvas>
         </div>
-        <div class="visualizer-box">
-            <canvas id="visualizer2" width="300" height="300"></canvas>
+        <div  class="visualizer-box">
+            <canvas style="background: url(Drake.webp); background-size: cover; 
+            background-position: center; 
+            background-repeat:no-repeat;" id="visualizer2" width="300" height="300"></canvas>
         </div>
     </div>
 
@@ -70,39 +75,38 @@
             }
 
             function draw() {
-                requestAnimationFrame(draw);
-                analyser.getByteFrequencyData(dataArray);
-                
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = 'black';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+    requestAnimationFrame(draw);
+    analyser.getByteFrequencyData(dataArray);
 
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const radius = 80;
-                
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-                ctx.strokeStyle = 'white';
-                ctx.lineWidth = 2;
-                ctx.stroke();
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears only the previous drawings, keeping the background image
 
-                for (let i = 0; i < dataArray.length; i++) {
-                    let angle = (i / dataArray.length) * Math.PI * 2;
-                    let barHeight = dataArray[i] / 2;
-                    let x1 = centerX + Math.cos(angle) * radius;
-                    let y1 = centerY + Math.sin(angle) * radius;
-                    let x2 = centerX + Math.cos(angle) * (radius + barHeight);
-                    let y2 = centerY + Math.sin(angle) * (radius + barHeight);
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 80;
 
-                    ctx.beginPath();
-                    ctx.moveTo(x1, y1);
-                    ctx.lineTo(x2, y2);
-                    ctx.strokeStyle = `hsl(${i * 2}, 100%, 50%)`;
-                    ctx.lineWidth = 3;
-                    ctx.stroke();
-                }
-            }
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    for (let i = 0; i < dataArray.length; i++) {
+        let angle = (i / dataArray.length) * Math.PI * 2;
+        let barHeight = dataArray[i] / 2;
+        let x1 = centerX + Math.cos(angle) * radius;
+        let y1 = centerY + Math.sin(angle) * radius;
+        let x2 = centerX + Math.cos(angle) * (radius + barHeight);
+        let y2 = centerY + Math.sin(angle) * (radius + barHeight);
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = `hsl(${i * 2}, 100%, 50%)`;
+        ctx.lineWidth = 3;
+        ctx.stroke();
+    }
+}
+
 
             return setupAudio;
         }
@@ -122,5 +126,9 @@
             }
         });
     </script>
+    <div id="subtitles" style="text-align: center; font-family: Playwrite DK Loopet;">
+        <h2>SUBTITLES</h2>
+        <p>example example example example example example example example example example example example example example </p>
+    </div>
 </body>
 </html>
